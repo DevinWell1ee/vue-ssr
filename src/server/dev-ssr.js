@@ -6,11 +6,13 @@ const fs = require('fs')
 const path = require('path')
 const Router = require('koa-router')
 // 1、webpack配置文件
-const webpackConfig = require('@vue/cli-service/webpack.config')
+let webpackConfig = require('@vue/cli-service/webpack.config')
 const { createBundleRenderer } = require("vue-server-renderer");
+
 
 // 2、编译webpack配置文件
 const serverCompiler = webpack(webpackConfig)
+
 const mfs = new MemoryFS()
 // 指定输出文件到的内存流中
 serverCompiler.outputFileSystem = mfs
@@ -60,6 +62,6 @@ function renderToString(context,renderer) {
 
 const router = new Router()
 
-router.get("*", handleRequest);
+router.get('(.*)', handleRequest)
 
 module.exports = router

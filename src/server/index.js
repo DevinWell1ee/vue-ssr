@@ -46,5 +46,5 @@ const handleRequest = async (ctx, next) => {
   const html = await renderToString(context);
   ctx.body = html;
 }
-router.get('*', handleRequest)
+router.get('(.*)', handleRequest)
 module.exports = router

@@ -10,11 +10,12 @@ const target = TARGET_NODE ? "server" : "client";
 const isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  baseUrl: isDev ? 'http://127.0.0.1:8080' : '',
+  publicPath: isDev ? 'http://127.0.0.1:8080' : '',
   css: {
     extract: !isDev
   },
   configureWebpack: () => ({
+
     // 将 entry 指向应用程序的 server / client 文件
     entry: `./src/${target}-entry.js`,
     // 对 bundle renderer 提供 source map 支持
